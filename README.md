@@ -1,2 +1,2 @@
 # MaSlackJax
-User script to enable mathjax on slack
+User script that enable mathjax on slack
