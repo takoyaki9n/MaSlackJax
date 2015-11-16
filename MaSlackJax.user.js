@@ -12,7 +12,6 @@
 /* jshint -W097 */
 'use strict';
 
-//TODO:チャンネル切り替え時にTypesetされない
 (function($) {
     $(document).ready(function(){
         var tags = '';
@@ -20,14 +19,10 @@
         tags += '<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>';
         tags += '<meta http-equiv="X-UA-Compatible" CONTENT="IE=EmulateIE7" />';
         $("head").append($(tags));
-        
+
         var msgs_div = $("#msgs_div")[0];
         var observer = new MutationObserver(function (mutations) {
-            $(mutations).each(function(i, mutation){
-                $(mutation.addedNodes).filter("ts-message").each(function (j, node) {
-                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, node]);
-                });
-            });
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, msgs_div]);
         });
         var config = { attributes: false, childList: true, characterData: false};
         observer.observe(msgs_div, config);
