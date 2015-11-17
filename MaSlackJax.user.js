@@ -14,8 +14,9 @@
 
 (function($) {
     $(document).ready(function(){
+        var conf = {TeX: {extensions: ["AMScd.js"]}, tex2jax: {inlineMath: [["$","$"]]}, displayMath: [["\\[","\\]"]]};
         var tags = '';
-        tags += '<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: {extensions: ["AMScd.js"]}, tex2jax: {inlineMath: [["$","$"]]}, displayMath: [["\\[","\\]"]]});</script>'
+        tags += `<script type="text/x-mathjax-config">MathJax.Hub.Config(${JSON.stringify(conf)});</script>`
         tags += '<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>';
         tags += '<meta http-equiv="X-UA-Compatible" CONTENT="IE=EmulateIE7" />';
         $("head").append($(tags));
